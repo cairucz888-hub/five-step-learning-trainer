@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>五步学习法训练器</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Before Live Practice</p>
+          <h1>五步学习法训练器</h1>
+          <p class="hero-copy">开播前 8 分钟，把一个知识练到说得出、用得上。</p>
+        </div>
+        <section class="stats" aria-label="练习数据">
+          <div>
+            <span>今日</span>
+            <strong id="todayCount">0</strong>
+          </div>
+          <div>
+            <span>连续</span>
+            <strong id="streakCount">0</strong>
+          </div>
+          <div>
+            <span>完成度</span>
+            <strong id="completionScore">0%</strong>
+          </div>
+        </section>
+      </header>
+
+      <section class="route" aria-label="五步流程">
+        <button class="step-pill is-active" type="button" data-step="0">
+          <span>1</span>抓骨架
+        </button>
+        <button class="step-pill" type="button" data-step="1">
+          <span>2</span>立即说
+        </button>
+        <button class="step-pill" type="button" data-step="2">
+          <span>3</span>允许烂
+        </button>
+        <button class="step-pill" type="button" data-step="3">
+          <span>4</span>关键词
+        </button>
+        <button class="step-pill" type="button" data-step="4">
+          <span>5</span>做迁移
+        </button>
+      </section>
+
+      <section class="layout">
+        <section class="workbench" aria-label="训练区">
+          <div class="topic-row">
+            <label for="topicInput">今天要练的知识</label>
+            <div class="topic-actions">
+              <button class="ghost-button" id="sampleBtn" type="button">换个题</button>
+              <button class="ghost-button" id="clearBtn" type="button">清空</button>
+            </div>
+          </div>
+          <textarea id="topicInput" class="topic-input" rows="2" placeholder="例如：为什么懂了一个知识，却说不出来、用不出来？"></textarea>
+
+          <article class="practice-card">
+            <div class="practice-head">
+              <div>
+                <p class="step-label" id="stepLabel">STEP 1</p>
+                <h2 id="stepTitle">抓骨架</h2>
+              </div>
+              <p class="step-time" id="stepTime">建议 2 分钟</p>
+            </div>
+
+            <p class="step-intro" id="stepIntro"></p>
+            <div class="step-body" id="stepBody"></div>
+
+            <div class="next-hint" id="nextHint"></div>
+          </article>
+        </section>
+
+        <aside class="side-panel" aria-label="控制区">
+          <section class="timer-card">
+            <div class="timer-ring" id="timerRing" aria-live="polite">
+              <span id="timeLabel">02:00</span>
+            </div>
+            <div class="duration-grid" aria-label="计时时长">
+              <button type="button" class="duration-button" data-seconds="30">30秒</button>
+              <button type="button" class="duration-button" data-seconds="60">1分</button>
+              <button type="button" class="duration-button is-active" data-seconds="120">2分</button>
+              <button type="button" class="duration-button" data-seconds="300">5分</button>
+            </div>
+            <div class="button-row">
+              <button class="primary-button" id="timerBtn" type="button">开始</button>
+              <button class="icon-button" id="resetBtn" type="button" aria-label="重置计时" title="重置计时">↺</button>
+            </div>
+            <button class="primary-button next-button" id="nextBtn" type="button">完成本步，进入下一步</button>
+          </section>
+
+          <section class="summary-card">
+            <div class="section-title">
+              <h2>今日练习单</h2>
+              <button class="ghost-button compact" id="copyBtn" type="button">复制</button>
+            </div>
+            <textarea id="summaryText" class="summary-text" readonly></textarea>
+            <button class="primary-button" id="saveBtn" type="button">保存今天这轮练习</button>
+          </section>
+
+          <section class="history-card">
+            <div class="section-title">
+              <h2>最近练习</h2>
+              <button class="ghost-button compact" id="clearHistoryBtn" type="button">清空</button>
+            </div>
+            <ol id="historyList" class="history-list"></ol>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
